@@ -6,20 +6,20 @@ import TodoList from "./todolist";
 const App = () => {
   const [todo, setTodo] = useState("");
   const [todos, setTodos] = useState([]);
-  const [editId, seteditId] = useState(0);
+  const [editid, seteditid] = useState(0);
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    if (editId) {
-      const editTodo = todos.find((i) => i.id === editId);
+    if (editid) {
+      const editTodo = todos.find((i) => i.id === editid);
       const updatedTodos = todos.map((t) =>
         t.id === editTodo.id
           ? (t = { id: t.id, todo })
           : { id: t.id, todo: t.todo }
       );
       setTodos(updatedTodos);
-      seteditId(0);
+      seteditid(0);
       setTodo("");
       return;
     }
@@ -38,17 +38,17 @@ const App = () => {
   const handleEdit = (id) => {
     const editTodo = todos.find((i) => i.id === id);
     setTodo(editTodo.todo);
-    seteditId(id);
+    seteditid(id);
   };
 
   return (
     <div className="App">
       <div className="container">
-        <h1>Todo List App</h1>
+        <h1>Todo List</h1>
         <TodoForm
           handleSubmit={handleSubmit}
           todo={todo}
-          editId={editId}
+          editid={editid}
           setTodo={setTodo}
         />
 
